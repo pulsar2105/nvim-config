@@ -39,3 +39,19 @@ keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Aller au buffer précédent" })
 keymap("n", "<C-s>", ":w<CR>", { desc = "Sauvegarder le fichier" })
 -- enregistrer sous un nouveau nom
 keymap("n", "<C-S-s>", ":saveas ", { desc = "Enregistrer le fichier sous un nouveau nom" })
+
+------------------------------- Session Manager -------------------------------
+----- load the session for the current directory
+keymap("n", "<leader>ls", function() require("persistence").load() end,
+    { desc = "Charger la session pour le répertoire actuel" })
+
+-- select a session to load
+keymap("n", "<leader>lS", function() require("persistence").select() end, { desc = "Sélectionner une session à charger" })
+
+-- load the last session
+keymap("n", "<leader>ll", function() require("persistence").load({ last = true }) end,
+    { desc = "Charger la dernière session" })
+
+-- stop Persistence => session won't be saved on exit
+keymap("n", "<leader>ld", function() require("persistence").stop() end,
+    { desc = "Arrêter Persistence => la session ne sera pas sauvegardée à la fermeture" })

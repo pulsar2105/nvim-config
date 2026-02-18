@@ -12,6 +12,10 @@ Configuration files of my personal nvim.
 ## Keymaps
 
 - `S-i` / `S-k` in visual mode to move up/down a selected block of texte.
+- `<leader>ls` load the current session.
+- `<leader>lS` select a session to load.
+- `<leader>sl` load the last session.
+- `<leader>sd` stop Persistence => session won't be saved on exit.
 
 ## Plugins
 
