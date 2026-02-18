@@ -32,5 +32,10 @@ keymap("n", "<C-l>", "<C-w>l", { desc = "Déplace le curseur dans la fenêtre dr
 
 -- Déplacment entre buffers
 -- Navigation entre les buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", { desc = "Aller au buffer suivant" })
+keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Aller au buffer précédent" })
+
+---------------------------------- Sauvegarde ---------------------------------
+keymap("n", "<C-s>", ":w<CR>", { desc = "Sauvegarder le fichier" })
+-- enregistrer sous un nouveau nom
+keymap("n", "<C-S-s>", ":saveas ", { desc = "Enregistrer le fichier sous un nouveau nom" })
