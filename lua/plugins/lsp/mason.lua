@@ -29,7 +29,6 @@ return {
       -- Mais au lieu de passer par :Mason pour installer, je vous recommande d'ajouter une entrée à cette liste
       -- Ça permettra à votre configuration d'être plus portable
       ensure_installed = {
-        "ada_ls",
         "clangd", -- c/c++
         "cmake",
         "crystalline",
@@ -39,7 +38,6 @@ return {
         "html",
         "lua_ls",
         "pylsp", -- python
-        "prolog_ls",
         "ruff",
         "rust_analyzer", -- rust
         "sqlls",
