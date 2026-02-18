@@ -17,21 +17,21 @@ return {
         -- layout
         layout_strategy = "horizontal",
         layout_config = {
-            -- config pour le layout horizontal
-            horizontal = {
+          -- config pour le layout horizontal
+          horizontal = {
             prompt_position = "top",
             preview_width = 0.50,
             results_width = 0.50,
-            },
-            -- config pour le layout vertical
-            vertical = {
+          },
+          -- config pour le layout vertical
+          vertical = {
             mirror = true,
-            },
+          },
 
-            -- config génrale pour tous les layouts
-            width = 0.80,
-            height = 0.80,
-            preview_cutoff = 120,
+          -- config génrale pour tous les layouts
+          width = 0.80,
+          height = 0.80,
+          preview_cutoff = 120,
         },
 
         -- Parce que c'est joli
@@ -49,7 +49,7 @@ return {
 
         -- telescope dans preview qui marche pas avec treesitter
         preview = {
-            treesitter = false,
+          treesitter = false,
         },
       },
     })
