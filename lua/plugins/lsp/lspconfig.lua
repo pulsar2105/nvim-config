@@ -9,19 +9,19 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     -- Utile pour éditer les fichiers lua spécifiques à la config neovim
     -- Notamment pour éviter le "Undefined global `vim`"
-    { "folke/lazydev.nvim", opts = {} },
+    { "folke/lazydev.nvim",                  opts = {} },
   },
   keys = {
-    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
-    { "gR", "<cmd>Telescope lsp_references<CR>", desc = "Show LSP references", mode = "n" },
-    { "gD", vim.lsp.buf.declaration, desc = "Go to declaration", mode = "n" },
-    { "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "Show LSP definitions", mode = "n" },
-    { "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP implementations", mode = "n" },
-    { "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Show LSP type definitions", mode = "n" },
-    { "gs", vim.lsp.buf.signature_help, desc = "Show LSP signature help", mode = "n" },
-    { "<leader>rn", vim.lsp.buf.rename, desc = "Smart rename", mode = "n" },
-    { "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics", mode = "n" },
-    { "<leader>d", vim.diagnostic.open_float, desc = "Show line diagnostics", mode = "n" },
+    { "<leader>ca", vim.lsp.buf.code_action,                   desc = "Code Action",               mode = { "n", "v" } },
+    { "gR",         "<cmd>Telescope lsp_references<CR>",       desc = "Show LSP references",       mode = "n" },
+    { "gD",         vim.lsp.buf.declaration,                   desc = "Go to declaration",         mode = "n" },
+    { "gd",         "<cmd>Telescope lsp_definitions<CR>",      desc = "Show LSP definitions",      mode = "n" },
+    { "gi",         "<cmd>Telescope lsp_implementations<CR>",  desc = "Show LSP implementations",  mode = "n" },
+    { "gt",         "<cmd>Telescope lsp_type_definitions<CR>", desc = "Show LSP type definitions", mode = "n" },
+    { "gs",         vim.lsp.buf.signature_help,                desc = "Show LSP signature help",   mode = "n" },
+    { "<leader>rn", vim.lsp.buf.rename,                        desc = "Smart rename",              mode = "n" },
+    { "<leader>D",  "<cmd>Telescope diagnostics bufnr=0<CR>",  desc = "Show buffer diagnostics",   mode = "n" },
+    { "<leader>d",  vim.diagnostic.open_float,                 desc = "Show line diagnostics",     mode = "n" },
     {
       "[d",
       function()
@@ -38,22 +38,33 @@ return {
       desc = "Go to next diagnostic",
       mode = "n",
     },
-    { "K", vim.lsp.buf.hover, desc = "Show documentation for what is under cursor", mode = "n" },
-    { "<leader>F", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "Format buffer", mode = { "n", "x" } },
-    { "<leader>rs", ":LspRestart<CR>", desc = "Restart LSP", mode = "n" },
+    { "K",          vim.lsp.buf.hover,                                 desc = "Show documentation for what is under cursor", mode = "n" },
+    { "<leader>F",  "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "Format buffer",                               mode = { "n", "x" } },
+    { "<leader>rs", ":LspRestart<CR>",                                 desc = "Restart LSP",                                 mode = "n" },
   },
   config = function()
-    -- Customize error signs
     vim.diagnostic.config({
+      -- Active les diagnostics et personnalise leur affichage
+      virtual_text = true, -- texte inline
+      signs = true,        -- icônes dans la gutter
+      underline = true,    -- soulignement rouge
+      update_in_insert = true,
+      severity_sort = true,
+
+      -- Customize error signs
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.INFO] = "",
-          [vim.diagnostic.severity.HINT] = "󰌵",
+          [vim.diagnostic.severity.ERROR] = "✘",
+          [vim.diagnostic.severity.WARN] = "▲",
+          [vim.diagnostic.severity.INFO] = "⚑",
+          [vim.diagnostic.severity.HINT] = "»",
         },
       },
     })
+
+    -- Active les inlay hints (les petites annotations de types, etc)
+    vim.lsp.inlay_hint.enable(true)
+
     -- Python
     vim.lsp.config("pylsp", {
       settings = {
@@ -100,22 +111,11 @@ return {
     vim.lsp.config("rust_analyzer", {
       settings = {
         ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
           check = {
             command = "clippy",
-          },
-          inlayHints = {
-            renderColons = true,
-            typeHints = {
-              enable = true,
-              hideClosureInitialization = false,
-              hideNamedConstructor = false,
-            },
-          },
-          diagnostics = {
-            enable = true,
-            styleLints = {
-              enable = true,
-            },
           },
         },
       },
