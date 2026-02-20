@@ -1,124 +1,144 @@
 return {
-  "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    -- Va permettre de remplir le plugin de complétion automatique nvim-cmp
-    -- avec les résultats des LSP
-    "hrsh7th/cmp-nvim-lsp",
-    -- Ajoute les « code actions » de type renommage de fichiers intelligent, etc
-    { "antosha417/nvim-lsp-file-operations", config = true },
-    -- Utile pour éditer les fichiers lua spécifiques à la config neovim
-    -- Notamment pour éviter le "Undefined global `vim`"
-    { "folke/lazydev.nvim",                  opts = {} },
-  },
-  keys = {
-    { "<leader>ca", vim.lsp.buf.code_action,                   desc = "Code Action",               mode = { "n", "v" } },
-    { "gR",         "<cmd>Telescope lsp_references<CR>",       desc = "Show LSP references",       mode = "n" },
-    { "gD",         vim.lsp.buf.declaration,                   desc = "Go to declaration",         mode = "n" },
-    { "gd",         "<cmd>Telescope lsp_definitions<CR>",      desc = "Show LSP definitions",      mode = "n" },
-    { "gi",         "<cmd>Telescope lsp_implementations<CR>",  desc = "Show LSP implementations",  mode = "n" },
-    { "gt",         "<cmd>Telescope lsp_type_definitions<CR>", desc = "Show LSP type definitions", mode = "n" },
-    { "gs",         vim.lsp.buf.signature_help,                desc = "Show LSP signature help",   mode = "n" },
-    { "<leader>rn", vim.lsp.buf.rename,                        desc = "Smart rename",              mode = "n" },
-    { "<leader>D",  "<cmd>Telescope diagnostics bufnr=0<CR>",  desc = "Show buffer diagnostics",   mode = "n" },
-    { "<leader>d",  vim.diagnostic.open_float,                 desc = "Show line diagnostics",     mode = "n" },
-    {
-      "[d",
-      function()
-        vim.diagnostic.jump({ count = -1, float = true })
-      end,
-      desc = "Go to previous diagnostic",
-      mode = "n",
-    },
-    {
-      "]d",
-      function()
-        vim.diagnostic.jump({ count = 1, float = true })
-      end,
-      desc = "Go to next diagnostic",
-      mode = "n",
-    },
-    { "K",          vim.lsp.buf.hover,                                 desc = "Show documentation for what is under cursor", mode = "n" },
-    { "<leader>F",  "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "Format buffer",                               mode = { "n", "x" } },
-    { "<leader>rs", ":LspRestart<CR>",                                 desc = "Restart LSP",                                 mode = "n" },
-  },
-  config = function()
-    vim.diagnostic.config({
-      -- Active les diagnostics et personnalise leur affichage
-      virtual_text = true, -- texte inline
-      underline = true,    -- soulignement rouge
-      update_in_insert = true,
-      severity_sort = true,
+	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		-- Va permettre de remplir le plugin de complétion automatique nvim-cmp
+		-- avec les résultats des LSP
+		"hrsh7th/cmp-nvim-lsp",
+		-- Ajoute les « code actions » de type renommage de fichiers intelligent, etc
+		{ "antosha417/nvim-lsp-file-operations", config = true },
+		-- Utile pour éditer les fichiers lua spécifiques à la config neovim
+		-- Notamment pour éviter le "Undefined global `vim`"
+		{ "folke/lazydev.nvim", opts = {} },
+	},
+	keys = {
+		{
+			"<leader>ca",
+			vim.lsp.buf.code_action,
+			desc = "Code Action",
+			mode = { "n", "v" },
+		},
+		{ "gR", "<cmd>Telescope lsp_references<CR>", desc = "Show LSP references", mode = "n" },
+		{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration", mode = "n" },
+		{ "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "Show LSP definitions", mode = "n" },
+		{ "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP implementations", mode = "n" },
+		{ "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Show LSP type definitions", mode = "n" },
+		{ "gs", vim.lsp.buf.signature_help, desc = "Show LSP signature help", mode = "n" },
+		{ "<leader>rn", vim.lsp.buf.rename, desc = "Smart rename", mode = "n" },
+		{ "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics", mode = "n" },
+		{ "<leader>d", vim.diagnostic.open_float, desc = "Show line diagnostics", mode = "n" },
+		{
+			"[d",
+			function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end,
+			desc = "Go to previous diagnostic",
+			mode = "n",
+		},
+		{
+			"]d",
+			function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end,
+			desc = "Go to next diagnostic",
+			mode = "n",
+		},
+		{
+			"K",
+			vim.lsp.buf.hover,
+			desc = "Show documentation for what is under cursor",
+			mode = "n",
+		},
+		{
+			"<leader>F",
+			"<cmd>lua vim.lsp.buf.format({async = true})<cr>",
+			desc = "Format buffer",
+			mode = { "n", "x" },
+		},
+		{
+			"<leader>rs",
+			":LspRestart<CR>",
+			desc = "Restart LSP",
+			mode = "n",
+		},
+	},
+	config = function()
+		vim.diagnostic.config({
+			-- Active les diagnostics et personnalise leur affichage
+			virtual_text = true, -- texte inline
+			underline = true, -- soulignement rouge
+			update_in_insert = true,
+			severity_sort = true,
 
-      -- Customize error signs
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = "✘",
-          [vim.diagnostic.severity.WARN] = "▲",
-          [vim.diagnostic.severity.INFO] = "⚑",
-          [vim.diagnostic.severity.HINT] = "»",
-        },
-      },
-    })
+			-- Customize error signs
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "✘",
+					[vim.diagnostic.severity.WARN] = "▲",
+					[vim.diagnostic.severity.INFO] = "⚑",
+					[vim.diagnostic.severity.HINT] = "?",
+				},
+			},
+		})
 
-    -- Active les inlay hints (les petites annotations de types, etc)
-    vim.lsp.inlay_hint.enable(true)
+		-- Active les inlay hints (les petites annotations de types, etc)
+		vim.lsp.inlay_hint.enable(true)
 
-    -- Python
-    vim.lsp.config("pylsp", {
-      settings = {
-        pylsp = {
-          plugins = {
-            -- formatter options
-            black = { enabled = true },
-            autopep8 = { enabled = false },
-            yapf = { enabled = false },
-            -- linter options
-            pyflakes = { enabled = false },
-            pycodestyle = {
-              enabled = true,
-              ignore = { "E501" },
-            },
-            -- type checker
-            pylsp_mypy = { enabled = true },
-            -- auto-completion options
-            jedi_completion = { fuzzy = true },
-            -- import sorting
-            pylsp_isort = { enabled = true },
-            rope_completion = { enabled = true },
-            rope_autoimport = {
-              enabled = true,
-            },
-          },
-        },
-      },
-    })
+		-- Python
+		vim.lsp.config("pylsp", {
+			settings = {
+				pylsp = {
+					plugins = {
+						-- formatter options
+						black = { enabled = true },
+						autopep8 = { enabled = false },
+						yapf = { enabled = false },
+						-- linter options
+						pyflakes = { enabled = false },
+						pycodestyle = {
+							enabled = true,
+							ignore = { "E501" },
+						},
+						-- type checker
+						pylsp_mypy = { enabled = true },
+						-- auto-completion options
+						jedi_completion = { fuzzy = true },
+						-- import sorting
+						pylsp_isort = { enabled = true },
+						rope_completion = { enabled = true },
+						rope_autoimport = {
+							enabled = true,
+						},
+					},
+				},
+			},
+		})
 
-    vim.lsp.config("ruff", {
-      settings = {
-        init_options = {
-          settings = {
-            -- Arguments par défaut de la ligne de commande ruff
-            -- (on ajoute les warnings pour le tri des imports)
-            args = { "--extend-select", "I" },
-          },
-        },
-      },
-    })
+		vim.lsp.config("ruff", {
+			settings = {
+				init_options = {
+					settings = {
+						-- Arguments par défaut de la ligne de commande ruff
+						-- (on ajoute les warnings pour le tri des imports)
+						args = { "--extend-select", "I" },
+					},
+				},
+			},
+		})
 
-    -- Rust
-    -- on utilise un autre serveur que rust_analyzer pour éviter les problèmes de performance
-    -- vim.lsp.enable("rust_analyzer", false)
+		-- Rust
+		-- on utilise un autre serveur que rust_analyzer pour éviter les problèmes de performance
+		-- vim.lsp.enable("rust_analyzer", false)
 
-    vim.lsp.config("rust_analyzer", {
-      settings = {
-        ["rust-analyzer"] = {
-          -- Enable clippy on save
-          checkOnSave = {
-            command = "clippy",
-          },
-        },
-      },
-    })
-  end,
+		vim.lsp.config("rust_analyzer", {
+			settings = {
+				["rust-analyzer"] = {
+					-- Enable clippy on save
+					checkOnSave = {
+						command = "clippy",
+					},
+				},
+			},
+		})
+	end,
 }
