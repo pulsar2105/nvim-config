@@ -140,5 +140,24 @@ return {
 				},
 			},
 		})
+
+		vim.lsp.config("clangd")
+		vim.lsp.config("cmake")
+		vim.lsp.config("crystalline")
+		vim.lsp.config("cssls")
+		vim.lsp.config("elmls")
+		vim.lsp.config("graphql")
+		vim.lsp.config("html")
+		vim.lsp.config("lua_ls")
+		vim.lsp.config("marksman")
+		vim.lsp.config("pyright")
+		vim.lsp.config("ruff")
+		vim.lsp.config("rust_analyzer")
+		vim.lsp.config("sqlls")
+		vim.lsp.config("stylua")
+		vim.lsp.config("svelte")
+		vim.lsp.config("texlab")
+		vim.lsp.config("ts_ls")
+		vim.lsp.config("yamlls")
 	end,
 }

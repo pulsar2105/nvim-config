@@ -1,4 +1,4 @@
 -- parentheses de toutes les couleurs
 return {
-  "hiphish/rainbow-delimiters.nvim",
+	"hiphish/rainbow-delimiters.nvim",
 }

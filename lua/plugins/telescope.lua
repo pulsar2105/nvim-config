@@ -1,93 +1,93 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    -- fzf implémentation en C pour plus de rapidité
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    local telescope = require("telescope")
-    local actions = require("telescope.actions")
+	"nvim-telescope/telescope.nvim",
+	branch = "0.1.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		-- fzf implémentation en C pour plus de rapidité
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-tree/nvim-web-devicons",
+	},
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 
-    telescope.setup({
-      defaults = {
+		telescope.setup({
+			defaults = {
 
-        -- layout
-        layout_strategy = "horizontal",
-        layout_config = {
-          -- config pour le layout horizontal
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.50,
-            results_width = 0.50,
-          },
-          -- config pour le layout vertical
-          vertical = {
-            mirror = true,
-          },
+				-- layout
+				layout_strategy = "horizontal",
+				layout_config = {
+					-- config pour le layout horizontal
+					horizontal = {
+						prompt_position = "top",
+						preview_width = 0.50,
+						results_width = 0.50,
+					},
+					-- config pour le layout vertical
+					vertical = {
+						mirror = true,
+					},
 
-          -- config génrale pour tous les layouts
-          width = 0.80,
-          height = 0.80,
-          preview_cutoff = 120,
-        },
+					-- config génrale pour tous les layouts
+					width = 0.80,
+					height = 0.80,
+					preview_cutoff = 120,
+				},
 
-        -- Parce que c'est joli
-        prompt_prefix = "> ",
-        selection_caret = "> ",
-        path_display = { "smart" },
-        file_ignore_patterns = { ".git/", "node_modules" },
+				-- Parce que c'est joli
+				prompt_prefix = "> ",
+				selection_caret = "> ",
+				path_display = { "smart" },
+				file_ignore_patterns = { ".git/", "node_modules" },
 
-        mappings = {
-          i = {
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-          },
-        },
+				mappings = {
+					i = {
+						["<C-j>"] = actions.move_selection_next,
+						["<C-k>"] = actions.move_selection_previous,
+					},
+				},
 
-        -- telescope dans preview qui marche pas avec treesitter
-        preview = {
-          treesitter = false,
-        },
-      },
-    })
+				-- telescope dans preview qui marche pas avec treesitter
+				preview = {
+					treesitter = false,
+				},
+			},
+		})
 
-    telescope.load_extension("fzf")
+		telescope.load_extension("fzf")
 
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+		-- set keymaps
+		local keymap = vim.keymap -- for conciseness
 
-    keymap.set(
-      "n",
-      "<leader>ff",
-      "<cmd>Telescope find_files<cr>",
-      { desc = "Recherche de chaînes de caractères dans les noms de fichiers" }
-    )
-    keymap.set(
-      "n",
-      "<leader>fg",
-      "<cmd>Telescope live_grep<cr>",
-      { desc = "Recherche de chaînes de caractères dans le contenu des fichiers" }
-    )
-    keymap.set(
-      "n",
-      "<leader>fb",
-      "<cmd>Telescope buffers<cr>",
-      { desc = "Recherche de chaînes de caractères dans les noms de buffers" }
-    )
-    keymap.set(
-      "n",
-      "<leader>fx",
-      "<cmd>Telescope grep_string<cr>",
-      { desc = "Recherche de la chaîne de caractères sous le curseur" }
-    )
-    keymap.set(
-      "n",
-      "<leader>lg",
-      "<cmd>Telescope live_grep<cr>",
-      { desc = "Recherche de chaînes de caractères dans le contenu des fichiers" }
-    )
-  end,
+		keymap.set(
+			"n",
+			"<leader>ff",
+			"<cmd>Telescope find_files<cr>",
+			{ desc = "Recherche de chaînes de caractères dans les noms de fichiers" }
+		)
+		keymap.set(
+			"n",
+			"<leader>fg",
+			"<cmd>Telescope live_grep<cr>",
+			{ desc = "Recherche de chaînes de caractères dans le contenu des fichiers" }
+		)
+		keymap.set(
+			"n",
+			"<leader>fb",
+			"<cmd>Telescope buffers<cr>",
+			{ desc = "Recherche de chaînes de caractères dans les noms de buffers" }
+		)
+		keymap.set(
+			"n",
+			"<leader>fx",
+			"<cmd>Telescope grep_string<cr>",
+			{ desc = "Recherche de la chaîne de caractères sous le curseur" }
+		)
+		keymap.set(
+			"n",
+			"<leader>lg",
+			"<cmd>Telescope live_grep<cr>",
+			{ desc = "Recherche de chaînes de caractères dans le contenu des fichiers" }
+		)
+	end,
 }
