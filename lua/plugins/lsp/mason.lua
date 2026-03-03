@@ -37,7 +37,6 @@ return {
 				"elmls",
 				"graphql",
 				"html",
-				"haskell-language-server",
 				"lua_ls",
 				"pylsp", -- python
 				"ruff",
@@ -45,6 +44,7 @@ return {
 				"sqlls",
 				"svelte",
 				"ts_ls",
+				"tinymist",
 				"yamlls",
 			},
 		})
