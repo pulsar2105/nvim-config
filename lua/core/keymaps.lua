@@ -10,6 +10,12 @@ keymap("i", ";;", "<ESC>", { desc = "Sortir du mode insertion avec ;;" })
 -- on efface le surlignage de la recherche
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Effacer le surlignage de la recherche" })
 
+-- déplacement verticale rapide CTRL + flèche => déplacement de 4 caractères
+keymap("n", "<C-Up>", "4k", { desc = "Déplacement rapide vers le haut" })
+keymap("n", "<C-Down>", "4j", { desc = "Déplacement rapide vers le bas" })
+keymap("i", "<C-Up>", "<ESC>4k", { desc = "Déplacement rapide vers le haut en mode insertion" })
+keymap("i", "<C-Down>", "<ESC>4j", { desc = "Déplacement rapide vers le bas en mode insertion" })
+
 ----------------------------- Déplacement du texte ----------------------------
 
 -- I déplace le texte sélectionné vers le haut en mode visuel (activé avec v)
@@ -18,9 +24,19 @@ keymap("v", "<S-i>", ":m .-2<CR>==", { desc = "Déplace le texte sélectionné v
 keymap("v", "<S-k>", ":m .+1<CR>==", { desc = "Déplace le texte sélectionné vers le bas en mode visuel" })
 
 -- I déplace le texte sélectionné vers le haut en mode visuel bloc (activé avec V)
-keymap("x", "<S-i>", ":move '<-2<CR>gv-gv", { desc = "Déplace le texte sélectionné vers le haut en mode visuel bloc" })
+keymap(
+	"x",
+	"<S-i>",
+	":move '<-2<CR>gv-gv",
+	{ desc = "Déplace le texte sélectionné vers le haut en mode visuel bloc" }
+)
 -- K déplace le texte sélectionné vers le bas en mode visuel (activé avec V)
-keymap("x", "<S-k>", ":move '>+1<CR>gv-gv", { desc = "Déplace le texte sélectionné vers le bas en mode visuel bloc" })
+keymap(
+	"x",
+	"<S-k>",
+	":move '>+1<CR>gv-gv",
+	{ desc = "Déplace le texte sélectionné vers le bas en mode visuel bloc" }
+)
 
 -------------------------- Déplacement entre fenêtre --------------------------
 
@@ -42,16 +58,21 @@ keymap("n", "<C-S-s>", ":saveas ", { desc = "Enregistrer le fichier sous un nouv
 
 ------------------------------- Session Manager -------------------------------
 ----- load the session for the current directory
-keymap("n", "<leader>ls", function() require("persistence").load() end,
-    { desc = "Charger la session pour le répertoire actuel" })
+keymap("n", "<leader>ls", function()
+	require("persistence").load()
+end, { desc = "Charger la session pour le répertoire actuel" })
 
 -- select a session to load
-keymap("n", "<leader>lS", function() require("persistence").select() end, { desc = "Sélectionner une session à charger" })
+keymap("n", "<leader>lS", function()
+	require("persistence").select()
+end, { desc = "Sélectionner une session à charger" })
 
 -- load the last session
-keymap("n", "<leader>ll", function() require("persistence").load({ last = true }) end,
-    { desc = "Charger la dernière session" })
+keymap("n", "<leader>ll", function()
+	require("persistence").load({ last = true })
+end, { desc = "Charger la dernière session" })
 
 -- stop Persistence => session won't be saved on exit
-keymap("n", "<leader>ld", function() require("persistence").stop() end,
-    { desc = "Arrêter Persistence => la session ne sera pas sauvegardée à la fermeture" })
+keymap("n", "<leader>ld", function()
+	require("persistence").stop()
+end, { desc = "Arrêter Persistence => la session ne sera pas sauvegardée à la fermeture" })
