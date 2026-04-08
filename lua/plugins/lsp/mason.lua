@@ -1,52 +1,45 @@
 return {
-	"mason-org/mason.nvim",
-	dependencies = {
-		"mason-org/mason-lspconfig.nvim",
-	},
-	config = function()
-		-- import de mason
-		local mason = require("mason")
+    "mason-org/mason.nvim",
+    dependencies = {
+        "mason-org/mason-lspconfig.nvim",
+    },
+    config = function()
+        local mason = require("mason")
+        local mason_lspconfig = require("mason-lspconfig")
 
-		-- import de mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
+        -- Active mason et personnalise les icônes
+        mason.setup({
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
+                },
+            },
+        })
 
-		-- Active mason et personnalise les icônes
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-		})
-
-		mason_lspconfig.setup({
-			automatic_enable = true,
-			-- Liste des serveurs à installer par défaut
-			-- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-			-- Vous pouvez ne pas en mettre ici et tout installer en utilisant :Mason
-			-- Mais au lieu de passer par :Mason pour installer, je vous recommande d'ajouter une entrée à cette liste
-			-- Ça permettra à votre configuration d'être plus portable
-			ensure_installed = {
-				"ada-language-server", -- Ada
-				"clangd", -- c/c++
-				"cmake",
-				"crystalline",
-				"cssls",
-				"elmls",
-				"graphql",
-				"html",
-				"lua_ls",
-				"pylsp", -- python
-				"ruff",
-				"rust_analyzer", -- rust
-				"sqlls",
-				"svelte",
-				"ts_ls",
-				"tinymist",
-				"yamlls",
-			},
-		})
-	end,
+        mason_lspconfig.setup({
+            automatic_enable = true,
+            -- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+            ensure_installed = {
+                "ada-language-server", -- Ada
+                "clangd",              -- c/c++
+                "cmake",
+                "crystalline",
+                "cssls",
+                "elmls",
+                "graphql",
+                "html",
+                "lua_ls",
+                "pylsp",         -- python
+                "ruff",
+                "rust_analyzer", -- rust
+                "sqlls",
+                "svelte",
+                "ts_ls",
+                "tinymist",
+                "yamlls",
+            },
+        })
+    end,
 }

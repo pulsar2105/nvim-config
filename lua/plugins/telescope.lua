@@ -29,7 +29,6 @@ return {
                     vertical = {
                         mirror = true,
                     },
-
                     -- config génrale pour tous les layouts
                     width = 0.80,
                     height = 0.80,
