@@ -28,6 +28,7 @@ return {
             },
             formatters = {
                 ["clang-format"] = { prepend_args = { "--style={IndentWidth: 4}" } },
+                stylua = { prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" } },
             },
             format_on_save = {
                 lsp_fallback = true,
