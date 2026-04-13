@@ -65,7 +65,7 @@ return {
         vim.diagnostic.config({
             -- Active les diagnostics et personnalise leur affichage
             virtual_text = true, -- texte inline
-            underline = true, -- soulignement rouge
+            underline = true,    -- soulignement rouge
             update_in_insert = true,
             severity_sort = true,
 
@@ -125,7 +125,6 @@ return {
             },
         })
 
-<<<<<<< HEAD
         -- Rust
         vim.lsp.config("rust_analyzer", {
             settings = {
@@ -138,21 +137,4 @@ return {
             },
         })
     end,
-=======
-        -- Rust
-        -- on utilise un autre serveur que rust_analyzer pour éviter les problèmes de performance
-        -- vim.lsp.enable("rust_analyzer", false)
-
-        vim.lsp.config("rust_analyzer", {
-            settings = {
-                ["rust-analyzer"] = {
-                    -- Enable clippy on save
-                    checkOnSave = {
-                        command = "clippy",
-                    },
-                },
-            },
-        })
-    end,
->>>>>>> 63b0058410a74f7d0538fe056cccaf9aaba65cb9
 }

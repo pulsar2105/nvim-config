@@ -18,7 +18,6 @@ return {
             },
         })
 
-<<<<<<< HEAD
         -- Active mason et personnalise les icônes
         mason.setup({
             ui = {
@@ -33,31 +32,6 @@ return {
         mason_lspconfig.setup({
             automatic_enable = true,
             -- Liste des serveurs à installer par défaut
-            -- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-            ensure_installed = {
-                "ada-language-server", -- Ada
-                "clangd", -- c/c++
-                "cmake",
-                "crystalline",
-                "cssls",
-                "elmls",
-                "graphql",
-                "html",
-                "lua_ls",
-                "pylsp", -- python
-                "ruff",
-                "rust_analyzer", -- rust
-                "sqlls",
-                "svelte",
-                "ts_ls",
-                "tinymist",
-                "yamlls",
-            },
-        })
-    end,
-=======
-        mason_lspconfig.setup({
-            automatic_enable = true,
             -- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
             ensure_installed = {
                 "ada-language-server", -- Ada
@@ -80,5 +54,4 @@ return {
             },
         })
     end,
->>>>>>> 63b0058410a74f7d0538fe056cccaf9aaba65cb9
 }
