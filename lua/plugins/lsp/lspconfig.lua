@@ -127,9 +127,6 @@ return {
 		})
 
 		-- Rust
-		-- on utilise un autre serveur que rust_analyzer pour éviter les problèmes de performance
-		-- vim.lsp.enable("rust_analyzer", false)
-
 		vim.lsp.config("rust_analyzer", {
 			settings = {
 				["rust-analyzer"] = {

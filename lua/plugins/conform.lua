@@ -7,7 +7,6 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				-- c/c++
 				["c"] = { "clang-format" },
 				["cpp"] = { "clang-format" },
 				css = { "prettier" },
@@ -28,9 +27,7 @@ return {
 				yaml = { "prettier" },
 			},
 			formatters = {
-				["clang-format"] = {
-					prepend_args = { "--style={IndentWidth: 4}" },
-				},
+				["clang-format"] = { prepend_args = { "--style={IndentWidth: 4}" } },
 			},
 			format_on_save = {
 				lsp_fallback = true,

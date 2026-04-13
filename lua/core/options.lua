@@ -1,7 +1,7 @@
 local opt = vim.opt -- raccourci pour un peu plus de concision
 
 -- numéros de ligne
-opt.relativenumber = true -- affichage des numéros de ligne relatives à la position actuelle du curseur
+opt.relativenumber = true -- affichage des numéros de ligne relatives
 opt.number = true -- affiche le numéro absolu de la ligne active lorsque que relativenumber est activé
 vim.opt.softtabstop = 4
 -- tabs & indentation
