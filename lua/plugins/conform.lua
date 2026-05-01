@@ -7,8 +7,8 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                ["c"] = { "clang-format" },
-                ["cpp"] = { "clang-format" },
+                ["c"] = { "uncrustify" },
+                ["cpp"] = { "uncrustify" },
                 css = { "prettier" },
                 elm = { "elm_format" },
                 graphql = { "prettier" },

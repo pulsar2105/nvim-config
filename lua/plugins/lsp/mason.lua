@@ -34,8 +34,7 @@ return {
             -- Liste des serveurs à installer par défaut
             -- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
             ensure_installed = {
-                "ada-language-server", -- Ada
-                "clangd",              -- c/c++
+                "clangd", -- c/c++
                 "cmake",
                 "crystalline",
                 "cssls",
@@ -43,7 +42,7 @@ return {
                 "graphql",
                 "html",
                 "lua_ls",
-                "pylsp",         -- python
+                "pylsp", -- python
                 "ruff",
                 "rust_analyzer", -- rust
                 "sqlls",
