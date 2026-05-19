@@ -7,6 +7,11 @@ return {
         local mason = require("mason")
         local mason_lspconfig = require("mason-lspconfig")
 
+        -- Path to python
+        mason.setup({
+            path = "/usr/bin/python3.14"
+        })
+
         -- Active mason et personnalise les icônes
         mason.setup({
             ui = {
@@ -35,14 +40,13 @@ return {
             -- List des serveurs possibles : https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
             ensure_installed = {
                 "clangd", -- c/c++
-                "cmake",
                 "crystalline",
                 "cssls",
                 "elmls",
                 "graphql",
                 "html",
                 "lua_ls",
-                "pylsp", -- python
+                "pylsp",         -- python
                 "ruff",
                 "rust_analyzer", -- rust
                 "sqlls",
