@@ -89,14 +89,17 @@ return {
                 pylsp = {
                     plugins = {
                         -- formatter options
-                        black = { enabled = true },
-                        autopep8 = { enabled = false },
+                        black = { enabled = false },
+                        autopep8 = {
+                            enabled = true,
+                            args = { "--indent-size=2" }
+                        },
                         yapf = { enabled = false },
                         -- linter options
                         pyflakes = { enabled = false },
                         pycodestyle = {
                             enabled = true,
-                            ignore = { "E501" },
+                            ignore = { "E501", "E111", "E114" },
                         },
                         -- type checker
                         pylsp_mypy = { enabled = true },
@@ -114,13 +117,11 @@ return {
         })
 
         vim.lsp.config("ruff", {
-            settings = {
-                init_options = {
-                    settings = {
-                        -- Arguments par défaut de la ligne de commande ruff
-                        -- (on ajoute les warnings pour le tri des imports)
-                        args = { "--extend-select", "I" },
-                    },
+            init_options = {
+                settings = {
+                    -- Arguments par défaut de la ligne de commande ruff
+                    -- (on ajoute les warnings pour le tri des imports)
+                    args = { "--extend-select", "I" },
                 },
             },
         })
@@ -133,6 +134,15 @@ return {
                     checkOnSave = {
                         command = "clippy",
                     },
+                },
+            },
+        })
+
+        -- SystemVerilog (verible)
+        vim.lsp.config("verible", {
+            settings = {
+                verible = {
+                    -- Configuration options for verible
                 },
             },
         })

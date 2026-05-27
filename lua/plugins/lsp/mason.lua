@@ -42,13 +42,14 @@ return {
                 "graphql",
                 "html",
                 "lua_ls",
-                "pylsp", -- python
+                "pylsp",         -- python
                 "ruff",
                 "rust_analyzer", -- rust
                 "sqlls",
                 "svelte",
                 "ts_ls",
                 "tinymist",
+                "verible", -- SystemVerilog
                 "yamlls",
             },
         })

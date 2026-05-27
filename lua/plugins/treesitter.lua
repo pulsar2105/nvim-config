@@ -32,6 +32,7 @@ return {
                 "python",
                 "rst",
                 "rust",
+                "systemverilog",
                 "typescript",
                 "vim",
                 "yaml",
