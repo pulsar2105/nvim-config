@@ -25,17 +25,17 @@ keymap("v", "<S-k>", ":m .+1<CR>==", { desc = "Déplace le texte sélectionné v
 
 -- I déplace le texte sélectionné vers le haut en mode visuel bloc (activé avec V)
 keymap(
-	"x",
-	"<S-i>",
-	":move '<-2<CR>gv-gv",
-	{ desc = "Déplace le texte sélectionné vers le haut en mode visuel bloc" }
+    "x",
+    "<S-i>",
+    ":move '<-2<CR>gv-gv",
+    { desc = "Déplace le texte sélectionné vers le haut en mode visuel bloc" }
 )
 -- K déplace le texte sélectionné vers le bas en mode visuel (activé avec V)
 keymap(
-	"x",
-	"<S-k>",
-	":move '>+1<CR>gv-gv",
-	{ desc = "Déplace le texte sélectionné vers le bas en mode visuel bloc" }
+    "x",
+    "<S-k>",
+    ":move '>+1<CR>gv-gv",
+    { desc = "Déplace le texte sélectionné vers le bas en mode visuel bloc" }
 )
 
 -------------------------- Déplacement entre fenêtre --------------------------
@@ -63,20 +63,24 @@ keymap("n", "<F5>", ":e<CR>G", { desc = "Recharge et aller à la fin du fichier"
 ------------------------------- Session Manager -------------------------------
 ----- load the session for the current directory
 keymap("n", "<leader>ls", function()
-	require("persistence").load()
+    require("persistence").load()
 end, { desc = "Charger la session pour le répertoire actuel" })
 
 -- select a session to load
 keymap("n", "<leader>lS", function()
-	require("persistence").select()
+    require("persistence").select()
 end, { desc = "Sélectionner une session à charger" })
 
 -- load the last session
 keymap("n", "<leader>ll", function()
-	require("persistence").load({ last = true })
+    require("persistence").load({ last = true })
 end, { desc = "Charger la dernière session" })
 
 -- stop Persistence => session won't be saved on exit
 keymap("n", "<leader>ld", function()
-	require("persistence").stop()
+    require("persistence").stop()
 end, { desc = "Arrêter Persistence => la session ne sera pas sauvegardée à la fermeture" })
+
+------------------------------- File Explorer ---------------------------------
+
+keymap("n", "<leader>e", ":Neotree<CR>", { desc = "Ouvrir l'explorateur de fichier" })
