@@ -56,6 +56,10 @@ keymap("n", "<C-s>", ":w<CR>", { desc = "Sauvegarder le fichier" })
 -- enregistrer sous un nouveau nom
 keymap("n", "<C-S-s>", ":saveas ", { desc = "Enregistrer le fichier sous un nouveau nom" })
 
+-------------------------------- Update File ----------------------------------
+
+keymap("n", "<F5>", ":e<CR>G", { desc = "Recharge et aller à la fin du fichier" })
+
 ------------------------------- Session Manager -------------------------------
 ----- load the session for the current directory
 keymap("n", "<leader>ls", function()
